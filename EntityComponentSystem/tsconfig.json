@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "noEmitOnError": false,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "declaration": true,
+    "out": "bin/sczEcs.js"
+  },
+  "exclude": [
+    "node_modules",
+    "bin"
+  ]
+}
