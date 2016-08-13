@@ -91,8 +91,8 @@
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/ISystem.ts" />
         <option value="$PROJECT_DIR$/IComponent.ts" />
-        <option value="$PROJECT_DIR$/Entity.ts" />
         <option value="$PROJECT_DIR$/SystemBase.ts" />
+        <option value="$PROJECT_DIR$/Entity.ts" />
       </list>
     </option>
   </component>
