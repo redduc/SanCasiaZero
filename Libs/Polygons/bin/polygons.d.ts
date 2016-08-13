@@ -19,7 +19,3 @@ declare namespace Polygons {
         transfer(x: number, y: number, angle: number, rotationPoint: PolygonPoint2D): Polygon2D;
     }
 }
-declare namespace Polygons {
-    class Polygons {
-    }
-}

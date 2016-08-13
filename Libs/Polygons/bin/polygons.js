@@ -66,13 +66,4 @@ var Polygons;
     }());
     Polygons.Polygon2D = Polygon2D;
 })(Polygons || (Polygons = {}));
-var Polygons;
-(function (Polygons_1) {
-    var Polygons = (function () {
-        function Polygons() {
-        }
-        return Polygons;
-    }());
-    Polygons_1.Polygons = Polygons;
-})(Polygons || (Polygons = {}));
 //# sourceMappingURL=polygons.js.map
