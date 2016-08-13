@@ -2,6 +2,7 @@
 
 namespace sczGame {
     import Entity = sczEcs.Entity;
+    import PolygonPoint2D = Polygons.PolygonPoint2D;
 
     export class RenderSystem extends sczEcs.SystemBase {
         private ctx;
@@ -21,21 +22,16 @@ namespace sczGame {
 
             if(translateComponent == null)
             {
-                translateComponent = new TranslateComponent(0,0);
+                translateComponent = new TranslateComponent(0,0,0);
             }
 
-            this.ctx.fillStyle = renderComponent.polygon.color;
-            this.ctx.beginPath();
-            this.ctx.moveTo(
-                renderComponent.polygon.points[0].x + translateComponent.x,
-                renderComponent.polygon.points[0].y + translateComponent.y);
-            for (var index = 0; index < renderComponent.polygon.points.length; index++) {
-                this.ctx.lineTo(
-                    renderComponent.polygon.points[index].x + translateComponent.x,
-                    renderComponent.polygon.points[index].y + translateComponent.y);
-            }
-            this.ctx.closePath();
-            this.ctx.fill();
+            renderComponent.polygon.transfer(
+                translateComponent.x,
+                translateComponent.y,
+                translateComponent.angel,
+                new PolygonPoint2D(
+                    translateComponent.rotationPoint.x,
+                    translateComponent.rotationPoint.y)).draw(this.ctx);
         }
 
     }

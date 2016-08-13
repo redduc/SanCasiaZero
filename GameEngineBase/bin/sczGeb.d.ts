@@ -27,6 +27,11 @@ declare namespace sczGame {
         getType(): string;
         x: number;
         y: number;
-        constructor(x: number, y: number);
+        angel: number;
+        rotationPoint: {
+            x: number;
+            y: number;
+        };
+        constructor(x: number, y: number, angel: number);
     }
 }

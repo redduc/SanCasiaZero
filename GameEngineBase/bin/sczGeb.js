@@ -6,6 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 /// <reference path="../../EntityComponentSystem/bin/sczEcs" />
 var sczGame;
 (function (sczGame) {
+    var PolygonPoint2D = Polygons.PolygonPoint2D;
     var RenderSystem = (function (_super) {
         __extends(RenderSystem, _super);
         function RenderSystem(canvasId) {
@@ -17,16 +18,9 @@ var sczGame;
             var renderComponent = entity.getComponentsByType(sczGame.RenderComponent._getType())[0];
             var translateComponent = entity.getComponentsByType(sczGame.TranslateComponent._getType())[0];
             if (translateComponent == null) {
-                translateComponent = new sczGame.TranslateComponent(0, 0);
+                translateComponent = new sczGame.TranslateComponent(0, 0, 0);
             }
-            this.ctx.fillStyle = renderComponent.polygon.color;
-            this.ctx.beginPath();
-            this.ctx.moveTo(renderComponent.polygon.points[0].x + translateComponent.x, renderComponent.polygon.points[0].y + translateComponent.y);
-            for (var index = 0; index < renderComponent.polygon.points.length; index++) {
-                this.ctx.lineTo(renderComponent.polygon.points[index].x + translateComponent.x, renderComponent.polygon.points[index].y + translateComponent.y);
-            }
-            this.ctx.closePath();
-            this.ctx.fill();
+            renderComponent.polygon.transfer(translateComponent.x, translateComponent.y, translateComponent.angel, new PolygonPoint2D(translateComponent.rotationPoint.x, translateComponent.rotationPoint.y)).draw(this.ctx);
         };
         return RenderSystem;
     }(sczEcs.SystemBase));
@@ -49,7 +43,7 @@ var sczGame;
             polygon.addPoint(new PolygonPoint2D(60, 120));
             polygon.addPoint(new PolygonPoint2D(120, 60));
             renderComponent.polygon = polygon;
-            entity.addComponent(new sczGame.TranslateComponent(100, 10));
+            entity.addComponent(new sczGame.TranslateComponent(150, 75, 180));
             entity.addComponent(renderComponent);
             this.renderSystem.registerEntity(entity);
             // start game
@@ -86,9 +80,11 @@ var sczGame;
 var sczGame;
 (function (sczGame) {
     var TranslateComponent = (function () {
-        function TranslateComponent(x, y) {
+        function TranslateComponent(x, y, angel) {
+            this.rotationPoint = { x: 0, y: 0 };
             this.x = x;
             this.y = y;
+            this.angel = angel;
         }
         TranslateComponent._getType = function () {
             return "TranslateComponent";

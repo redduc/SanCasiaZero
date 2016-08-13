@@ -15,11 +15,15 @@ namespace sczGame {
 
         public x: number;
         public y: number;
+        public angel: number;
+        public rotationPoint = { x: 0, y: 0};
 
-        public constructor(x: number, y: number)
+        public constructor(x: number, y: number, angel: number)
         {
             this.x = x;
             this.y = y;
+            this.angel = angel;
+
         }
     }
 }
