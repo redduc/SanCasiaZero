@@ -19,13 +19,14 @@ namespace sczGame
             this.renderSystem = new RenderSystem("gameCanvas");
         }
 
-        private gameLoop(): void
+        private startGameLoop(): void
         {
-            //compute
+            setInterval(() => {
+                //compute
 
-            // render
-            this.renderSystem.process();
-
+                // render
+                this.renderSystem.process();
+            }, 1000/30);
         }
     }
 }
