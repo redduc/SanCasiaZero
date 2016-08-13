@@ -8,9 +8,9 @@ declare namespace sczGame {
 }
 declare namespace sczGame {
     class Engine {
-        private renderSystem;
+        renderSystem: RenderSystem;
         constructor();
-        gameLoop(): void;
+        private gameLoop();
     }
 }
 declare namespace sczGame {

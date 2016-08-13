@@ -30,24 +30,10 @@ var sczGame;
 /// <reference path="../Libs/Polygons/bin/polygons" />
 var sczGame;
 (function (sczGame) {
-    var Polygon2D = Polygons.Polygon2D;
-    var PolygonPoint2D = Polygons.PolygonPoint2D;
-    var Entity = sczEcs.Entity;
     var Engine = (function () {
         function Engine() {
+            // initiate systems
             this.renderSystem = new sczGame.RenderSystem("gameCanvas");
-            var entity = new Entity(0);
-            var renderComponent = new sczGame.RenderComponent();
-            var polygon = new Polygon2D("#000");
-            polygon.addPoint(new PolygonPoint2D(0, 0));
-            polygon.addPoint(new PolygonPoint2D(60, 120));
-            polygon.addPoint(new PolygonPoint2D(120, 60));
-            renderComponent.polygon = polygon;
-            entity.addComponent(new sczGame.TranslateComponent(150, 75, 180));
-            entity.addComponent(renderComponent);
-            this.renderSystem.registerEntity(entity);
-            // start game
-            this.gameLoop();
         }
         Engine.prototype.gameLoop = function () {
             //compute
