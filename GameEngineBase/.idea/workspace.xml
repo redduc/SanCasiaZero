@@ -61,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/../EntityComponentSystem/bin/sczEcs.d.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -296,12 +296,12 @@
       <workItem from="1471022505819" duration="7703000" />
       <workItem from="1471098441624" duration="936000" />
       <workItem from="1471103616483" duration="18000" />
-      <workItem from="1471103675775" duration="1219000" />
+      <workItem from="1471103675775" duration="1819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18825000" />
+    <option name="totallyTimeSpent" value="19425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="1" />
@@ -438,7 +438,7 @@
     <entry file="file://$PROJECT_DIR$/../EntityComponentSystem/bin/sczEcs.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>

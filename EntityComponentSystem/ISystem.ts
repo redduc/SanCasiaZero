@@ -1,9 +1,9 @@
 namespace sczEcs
 {
-    export interface ISystem<TComponent extends IComponent>
+    export interface ISystem
     {
-        addComponent(component: TComponent):void;
-        removeComponent(id: number): void;
+        registerEntity(entity: Entity):void;
+        deregisterEntity(id: number): void;
         process(): void;
     }
 }

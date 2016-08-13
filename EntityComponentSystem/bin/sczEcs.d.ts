@@ -3,34 +3,30 @@ declare namespace sczEcs {
         private id;
         private components;
         constructor(id: number);
+        getId(): number;
         addComponent(component: IComponent): void;
-        removeComponent(id: number): void;
-        getComponent(id: number): IComponent;
-        getComponentsByType<TComponent extends IComponent>(): IComponent[];
-        getComponents(): IComponent[];
+        getComponentsByType(type: string): IComponent[];
     }
 }
 declare namespace sczEcs {
     interface IComponent {
-        getId(): number;
+        getType(): string;
     }
 }
 declare namespace sczEcs {
-    interface ISystem<TComponent extends IComponent> {
-        addComponent(component: TComponent): void;
-        removeComponent(id: number): void;
+    interface ISystem {
+        registerEntity(entity: Entity): void;
+        deregisterEntity(id: number): void;
         process(): void;
     }
 }
 declare namespace sczEcs {
-    abstract class SystemBase<TComponent extends IComponent> implements ISystem<TComponent> {
-        protected components: {
-            [id: number]: TComponent;
-        };
+    abstract class SystemBase implements ISystem {
+        protected entities: Entity[];
         constructor();
-        addComponent(component: TComponent): void;
-        removeComponent(id: number): void;
-        abstract process(): void;
-        getComponents(): TComponent[];
+        registerEntity(entity: sczEcs.Entity): void;
+        deregisterEntity(id: number): void;
+        process(): void;
+        protected abstract processEntity(entity: Entity): any;
     }
 }

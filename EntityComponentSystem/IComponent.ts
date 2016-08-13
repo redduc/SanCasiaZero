@@ -2,6 +2,6 @@ namespace sczEcs
 {
     export interface IComponent
     {
-        getId(): number;
+        getType(): string;
     }
 }

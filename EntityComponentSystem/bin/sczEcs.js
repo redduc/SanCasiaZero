@@ -5,32 +5,19 @@ var sczEcs;
             this.id = id;
             this.components = new Array();
         }
+        Entity.prototype.getId = function () {
+            return this.id;
+        };
         Entity.prototype.addComponent = function (component) {
-            this.components[component.getId()] = component;
+            this.components.push(component);
         };
-        Entity.prototype.removeComponent = function (id) {
-            delete this.components[id];
-        };
-        Entity.prototype.getComponent = function (id) {
-            return this.components[id];
-        };
-        Entity.prototype.getComponentsByType = function () {
-            throw new Error("Not yet implemented! (due to generic type comparison");
-            var result;
-            for (var componentId in this.components) {
-                var component = this.components[componentId];
-                //if(component instanceof TComponent)
-                //if(typeof(component) === TComponent)
-                if (true) {
+        Entity.prototype.getComponentsByType = function (type) {
+            var result = new Array();
+            for (var index = 0; index < this.components.length; index++) {
+                var component = this.components[index];
+                if (component.getType() === type) {
                     result.push(component);
                 }
-            }
-            return result;
-        };
-        Entity.prototype.getComponents = function () {
-            var result;
-            for (var componentId in this.components) {
-                result.push(this.components[componentId]);
             }
             return result;
         };
@@ -42,20 +29,24 @@ var sczEcs;
 (function (sczEcs) {
     var SystemBase = (function () {
         function SystemBase() {
-            this.components = new Array();
+            this.entities = new Array();
         }
-        SystemBase.prototype.addComponent = function (component) {
-            this.components[component.getId()] = component;
+        SystemBase.prototype.registerEntity = function (entity) {
+            this.entities.push(entity);
         };
-        SystemBase.prototype.removeComponent = function (id) {
-            delete this.components[id];
-        };
-        SystemBase.prototype.getComponents = function () {
-            var result = new Array();
-            for (var componentId in this.components) {
-                result.push(this.components[componentId]);
+        SystemBase.prototype.deregisterEntity = function (id) {
+            for (var index = 0; index < this.entities.length; index++) {
+                var entity = this.entities[index];
+                if (entity.getId() == id) {
+                    delete this.entities[index];
+                    return;
+                }
             }
-            return result;
+        };
+        SystemBase.prototype.process = function () {
+            for (var index = 0; index < this.entities.length; index++) {
+                this.processEntity(this.entities[index]);
+            }
         };
         return SystemBase;
     }());

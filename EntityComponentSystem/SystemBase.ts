@@ -1,32 +1,36 @@
 namespace sczEcs {
-    export abstract class SystemBase<TComponent extends IComponent> implements ISystem<TComponent> {
-        protected components: { [id: number]: TComponent };
+    export abstract class SystemBase implements ISystem {
+        protected entities: Entity[];
 
         constructor()
         {
-            this.components = new Array();
+            this.entities = new Array();
         }
 
-        addComponent(component: TComponent): void
-        {
-            this.components[component.getId()] = component;
+        registerEntity(entity: sczEcs.Entity): void {
+            this.entities.push(entity);
         }
 
-        removeComponent(id: number): void
-        {
-            delete this.components[id]
-        }
-
-        abstract process(): void;
-
-        getComponents():TComponent[]
-        {
-            var result: TComponent[] = new Array();
-            for(var componentId in this.components)
+        deregisterEntity(id: number): void {
+            for(var index = 0; index < this.entities.length; index++)
             {
-                result.push(this.components[componentId]);
+                var entity: Entity = this.entities[index];
+                if(entity.getId() == id)
+                {
+                    delete this.entities[index];
+                    return;
+                }
             }
-            return result;
         }
+
+        process(): void
+        {
+            for(var index = 0; index < this.entities.length; index++)
+            {
+                this.processEntity(this.entities[index]);
+            }
+        }
+
+        protected abstract processEntity(entity: Entity);
     }
 }
