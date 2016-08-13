@@ -1,5 +1,5 @@
 ///<reference path="systems/RenderSystem.ts"/>
-/// <reference path="../Libs/Polygons/bin/polygons" />
+///<reference path="../Libs/Polygons/bin/polygons" />
 
 
 namespace sczGame
@@ -21,7 +21,7 @@ namespace sczGame
             this.velocitySystem = new VelocitySystem();
         }
 
-        private startGameLoop(): void
+        public startGameLoop(): void
         {
             setInterval(() => {
                 //compute

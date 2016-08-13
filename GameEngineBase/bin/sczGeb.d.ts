@@ -9,8 +9,9 @@ declare namespace sczGame {
 declare namespace sczGame {
     class Engine {
         renderSystem: RenderSystem;
+        velocitySystem: VelocitySystem;
         constructor();
-        private gameLoop();
+        startGameLoop(): void;
     }
 }
 declare namespace sczGame {
@@ -33,5 +34,22 @@ declare namespace sczGame {
             y: number;
         };
         constructor(x: number, y: number, angel: number);
+    }
+}
+declare namespace sczGame {
+    class VelocityComponent implements sczEcs.IComponent {
+        static _getType(): string;
+        getType(): string;
+        x: number;
+        y: number;
+        spin: number;
+        constructor(x: number, y: number, spin: number);
+    }
+}
+declare namespace sczGame {
+    import Entity = sczEcs.Entity;
+    class VelocitySystem extends sczEcs.SystemBase {
+        constructor();
+        protected processEntity(entity: Entity): void;
     }
 }
