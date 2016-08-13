@@ -14,5 +14,10 @@ namespace sczGame {
         }
 
         public polygon: Polygons.Polygon2D;
+
+        public constructor()
+        {
+            this.polygon = new Polygons.Polygon2D("#FFF");
+        }
     }
 }

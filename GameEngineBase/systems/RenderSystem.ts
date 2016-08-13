@@ -13,13 +13,26 @@ namespace sczGame {
         }
 
         protected processEntity(entity: Entity) {
-            var component: RenderComponent = <RenderComponent>entity.getComponentsByType(RenderComponent._getType())[0];
+            var renderComponent: RenderComponent =
+                <RenderComponent>entity.getComponentsByType(RenderComponent._getType())[0];
 
-            this.ctx.fillStyle = component.polygon.color;
+            var translateComponent: TranslateComponent =
+                <TranslateComponent>entity.getComponentsByType(TranslateComponent._getType())[0];
+
+            if(translateComponent == null)
+            {
+                translateComponent = new TranslateComponent(0,0);
+            }
+
+            this.ctx.fillStyle = renderComponent.polygon.color;
             this.ctx.beginPath();
-            this.ctx.moveTo(component.polygon.points[0].x, component.polygon.points[0].y);
-            for (var index = 0; index < component.polygon.points.length; index++) {
-                this.ctx.lineTo(component.polygon.points[index].x, component.polygon.points[index].y);
+            this.ctx.moveTo(
+                renderComponent.polygon.points[0].x + translateComponent.x,
+                renderComponent.polygon.points[0].y + translateComponent.y);
+            for (var index = 0; index < renderComponent.polygon.points.length; index++) {
+                this.ctx.lineTo(
+                    renderComponent.polygon.points[index].x + translateComponent.x,
+                    renderComponent.polygon.points[index].y + translateComponent.y);
             }
             this.ctx.closePath();
             this.ctx.fill();

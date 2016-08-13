@@ -18,5 +18,15 @@ declare namespace sczGame {
         static _getType(): string;
         getType(): string;
         polygon: Polygons.Polygon2D;
+        constructor();
+    }
+}
+declare namespace sczGame {
+    class TranslateComponent implements sczEcs.IComponent {
+        static _getType(): string;
+        getType(): string;
+        x: number;
+        y: number;
+        constructor(x: number, y: number);
     }
 }

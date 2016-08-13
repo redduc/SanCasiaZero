@@ -14,12 +14,16 @@ var sczGame;
             this.ctx = canvas.getContext('2d');
         }
         RenderSystem.prototype.processEntity = function (entity) {
-            var component = entity.getComponentsByType(sczGame.RenderComponent._getType())[0];
-            this.ctx.fillStyle = component.polygon.color;
+            var renderComponent = entity.getComponentsByType(sczGame.RenderComponent._getType())[0];
+            var translateComponent = entity.getComponentsByType(sczGame.TranslateComponent._getType())[0];
+            if (translateComponent == null) {
+                translateComponent = new sczGame.TranslateComponent(0, 0);
+            }
+            this.ctx.fillStyle = renderComponent.polygon.color;
             this.ctx.beginPath();
-            this.ctx.moveTo(component.polygon.points[0].x, component.polygon.points[0].y);
-            for (var index = 0; index < component.polygon.points.length; index++) {
-                this.ctx.lineTo(component.polygon.points[index].x, component.polygon.points[index].y);
+            this.ctx.moveTo(renderComponent.polygon.points[0].x + translateComponent.x, renderComponent.polygon.points[0].y + translateComponent.y);
+            for (var index = 0; index < renderComponent.polygon.points.length; index++) {
+                this.ctx.lineTo(renderComponent.polygon.points[index].x + translateComponent.x, renderComponent.polygon.points[index].y + translateComponent.y);
             }
             this.ctx.closePath();
             this.ctx.fill();
@@ -45,6 +49,7 @@ var sczGame;
             polygon.addPoint(new PolygonPoint2D(60, 120));
             polygon.addPoint(new PolygonPoint2D(120, 60));
             renderComponent.polygon = polygon;
+            entity.addComponent(new sczGame.TranslateComponent(100, 10));
             entity.addComponent(renderComponent);
             this.renderSystem.registerEntity(entity);
             // start game
@@ -65,6 +70,7 @@ var sczGame;
 (function (sczGame) {
     var RenderComponent = (function () {
         function RenderComponent() {
+            this.polygon = new Polygons.Polygon2D("#FFF");
         }
         RenderComponent._getType = function () {
             return "RenderComponent";
@@ -75,5 +81,23 @@ var sczGame;
         return RenderComponent;
     }());
     sczGame.RenderComponent = RenderComponent;
+})(sczGame || (sczGame = {}));
+/// <reference path="../../EntityComponentSystem/bin/sczEcs" />
+var sczGame;
+(function (sczGame) {
+    var TranslateComponent = (function () {
+        function TranslateComponent(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        TranslateComponent._getType = function () {
+            return "TranslateComponent";
+        };
+        TranslateComponent.prototype.getType = function () {
+            return TranslateComponent._getType();
+        };
+        return TranslateComponent;
+    }());
+    sczGame.TranslateComponent = TranslateComponent;
 })(sczGame || (sczGame = {}));
 //# sourceMappingURL=sczGeb.js.map

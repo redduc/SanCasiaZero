@@ -21,7 +21,9 @@ namespace sczGame {
             polygon.addPoint(new PolygonPoint2D(60, 120));
             polygon.addPoint(new PolygonPoint2D(120, 60));
             renderComponent.polygon = polygon;
-            entity.addComponent(renderComponent)
+
+            entity.addComponent(new TranslateComponent(100,10));
+            entity.addComponent(renderComponent);
 
             this.renderSystem.registerEntity(entity);
 
