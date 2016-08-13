@@ -13,13 +13,8 @@ var sczGame;
             var canvas = document.getElementById(canvasId);
             this.ctx = canvas.getContext('2d');
         }
-        RenderSystem.prototype.process = function () {
-            var components = this.getComponents();
-            for (var index = 0; index < components.length; index++) {
-                this.processComponent(components[index]);
-            }
-        };
-        RenderSystem.prototype.processComponent = function (component) {
+        RenderSystem.prototype.processEntity = function (entity) {
+            var component = entity.getComponentsByType(sczGame.RenderComponent._getType())[0];
             this.ctx.fillStyle = component.polygon.color;
             this.ctx.beginPath();
             this.ctx.moveTo(component.polygon.points[0].x, component.polygon.points[0].y);
@@ -39,16 +34,19 @@ var sczGame;
 (function (sczGame) {
     var Polygon2D = Polygons.Polygon2D;
     var PolygonPoint2D = Polygons.PolygonPoint2D;
+    var Entity = sczEcs.Entity;
     var Engine = (function () {
         function Engine() {
             this.renderSystem = new sczGame.RenderSystem("gameCanvas");
-            var renderComponent = new sczGame.RenderComponent(1);
+            var entity = new Entity(0);
+            var renderComponent = new sczGame.RenderComponent();
             var polygon = new Polygon2D("#000");
             polygon.addPoint(new PolygonPoint2D(0, 0));
             polygon.addPoint(new PolygonPoint2D(60, 120));
             polygon.addPoint(new PolygonPoint2D(120, 60));
             renderComponent.polygon = polygon;
-            this.renderSystem.addComponent(renderComponent);
+            entity.addComponent(renderComponent);
+            this.renderSystem.registerEntity(entity);
             // start game
             this.gameLoop();
         }
@@ -66,11 +64,13 @@ var sczGame;
 var sczGame;
 (function (sczGame) {
     var RenderComponent = (function () {
-        function RenderComponent(id) {
-            this.id = id;
+        function RenderComponent() {
         }
-        RenderComponent.prototype.getId = function () {
-            return this.id;
+        RenderComponent._getType = function () {
+            return "RenderComponent";
+        };
+        RenderComponent.prototype.getType = function () {
+            return RenderComponent._getType();
         };
         return RenderComponent;
     }());

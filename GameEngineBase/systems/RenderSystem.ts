@@ -1,7 +1,9 @@
 /// <reference path="../../EntityComponentSystem/bin/sczEcs" />
 
 namespace sczGame {
-    export class RenderSystem extends sczEcs.SystemBase<RenderComponent> {
+    import Entity = sczEcs.Entity;
+
+    export class RenderSystem extends sczEcs.SystemBase {
         private ctx;
 
         constructor(canvasId: string) {
@@ -10,14 +12,9 @@ namespace sczGame {
             this.ctx = canvas.getContext('2d');
         }
 
-        process(): void {
-            var components: RenderComponent[] = this.getComponents();
-            for (var index = 0; index < components.length; index++) {
-                this.processComponent(components[index]);
-            }
-        }
+        protected processEntity(entity: Entity) {
+            var component: RenderComponent = <RenderComponent>entity.getComponentsByType(RenderComponent._getType())[0];
 
-        processComponent(component: RenderComponent) {
             this.ctx.fillStyle = component.polygon.color;
             this.ctx.beginPath();
             this.ctx.moveTo(component.polygon.points[0].x, component.polygon.points[0].y);

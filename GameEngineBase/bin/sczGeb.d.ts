@@ -1,9 +1,9 @@
 declare namespace sczGame {
-    class RenderSystem extends sczEcs.SystemBase<RenderComponent> {
+    import Entity = sczEcs.Entity;
+    class RenderSystem extends sczEcs.SystemBase {
         private ctx;
         constructor(canvasId: string);
-        process(): void;
-        processComponent(component: RenderComponent): void;
+        protected processEntity(entity: Entity): void;
     }
 }
 declare namespace sczGame {
@@ -15,9 +15,8 @@ declare namespace sczGame {
 }
 declare namespace sczGame {
     class RenderComponent implements sczEcs.IComponent {
-        private id;
-        constructor(id: number);
-        getId(): number;
+        static _getType(): string;
+        getType(): string;
         polygon: Polygons.Polygon2D;
     }
 }

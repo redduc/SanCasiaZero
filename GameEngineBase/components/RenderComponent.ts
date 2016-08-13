@@ -3,14 +3,14 @@
 
 namespace sczGame {
     export class RenderComponent implements sczEcs.IComponent {
-        private id: number;
-
-        constructor(id: number) {
-            this.id = id;
+        public static _getType(): string
+        {
+            return "RenderComponent";
         }
 
-        getId(): number {
-            return this.id;
+        public getType(): string
+        {
+            return RenderComponent._getType();
         }
 
         public polygon: Polygons.Polygon2D;
