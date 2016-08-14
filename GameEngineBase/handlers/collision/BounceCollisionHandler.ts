@@ -1,7 +1,7 @@
 namespace sczGame
 {
     import Entity = sczEcs.Entity;
-    export class BounceCollisionHandle
+    export class BounceCollisionHandle implements ICollisionHandler
     {
         public constructor()
         {}
@@ -12,6 +12,7 @@ namespace sczGame
 
             selfVelocity.x *= -1;
             selfVelocity.y *= -1;
+            selfVelocity.spin *= -1;
         }
     }
 }

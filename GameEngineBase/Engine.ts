@@ -13,12 +13,14 @@ namespace sczGame
         // systems
         public renderSystem: RenderSystem;
         public velocitySystem: VelocitySystem;
+        public physicsSystem: PhysicsSystem;
 
         public constructor()
         {
             // initiate systems
             this.renderSystem = new RenderSystem("gameCanvas");
             this.velocitySystem = new VelocitySystem();
+            this.physicsSystem = new PhysicsSystem();
         }
 
         public startGameLoop(): void
@@ -26,6 +28,7 @@ namespace sczGame
             setInterval(() => {
                 //compute
                 this.velocitySystem.process();
+                this.physicsSystem.process();
 
                 // render
                 this.renderSystem.process();
