@@ -7,30 +7,33 @@ bin/*
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
+
+# ECS at "EntityComponentSystem/"
+
 # User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
+EntityComponentSystem/.idea/workspace.xml
+EntityComponentSystem/.idea/tasks.xml
+EntityComponentSystem/.idea/dictionaries
+EntityComponentSystem/.idea/vcs.xml
+EntityComponentSystem/.idea/jsLibraryMappings.xml
 
 # Sensitive or high-churn files:
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/dataSources.local.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
+EntityComponentSystem/.idea/dataSources.ids
+EntityComponentSystem/.idea/dataSources.xml
+EntityComponentSystem/.idea/dataSources.local.xml
+EntityComponentSystem/.idea/sqlDataSources.xml
+EntityComponentSystem/.idea/dynamic.xml
+EntityComponentSystem/.idea/uiDesigner.xml
 
 # Gradle:
-.idea/gradle.xml
-.idea/libraries
+EntityComponentSystem/.idea/gradle.xml
+EntityComponentSystem/.idea/libraries
 
 # Mongo Explorer plugin:
-.idea/mongoSettings.xml
+EntityComponentSystem/.idea/mongoSettings.xml
 
 ## File-based project format:
-*.iws
+EntityComponentSystem/*.iws
 
 ## Plugin-specific files:
 
@@ -38,16 +41,172 @@ bin/*
 /out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+EntityComponentSystem/.idea_modules/
 
 # JIRA plugin
-atlassian-ide-plugin.xml
+EntityComponentSystem/atlassian-ide-plugin.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+EntityComponentSystem/com_crashlytics_export_strings.xml
+EntityComponentSystem/crashlytics.properties
+EntityComponentSystem/crashlytics-build.properties
+EntityComponentSystem/fabric.properties
+
+### WebStorm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml 
+# *.ipr
+
+# GEB at "GameEngineBase/"
+
+# User-specific stuff:
+GameEngineBase/.idea/workspace.xml
+GameEngineBase/.idea/tasks.xml
+GameEngineBase/.idea/dictionaries
+GameEngineBase/.idea/vcs.xml
+GameEngineBase/.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+GameEngineBase/.idea/dataSources.ids
+GameEngineBase/.idea/dataSources.xml
+GameEngineBase/.idea/dataSources.local.xml
+GameEngineBase/.idea/sqlDataSources.xml
+GameEngineBase/.idea/dynamic.xml
+GameEngineBase/.idea/uiDesigner.xml
+
+# Gradle:
+GameEngineBase/.idea/gradle.xml
+GameEngineBase/.idea/libraries
+
+# Mongo Explorer plugin:
+GameEngineBase/.idea/mongoSettings.xml
+
+## File-based project format:
+GameEngineBase/*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+GameEngineBase/.idea_modules/
+
+# JIRA plugin
+GameEngineBase/atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+GameEngineBase/com_crashlytics_export_strings.xml
+GameEngineBase/crashlytics.properties
+GameEngineBase/crashlytics-build.properties
+GameEngineBase/fabric.properties
+
+### WebStorm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml 
+# *.ipr
+
+# Example:BallGame at "Examples/BallGame/"
+
+# User-specific stuff:
+Examples/BallGame/.idea/workspace.xml
+Examples/BallGame/.idea/tasks.xml
+Examples/BallGame/.idea/dictionaries
+Examples/BallGame/.idea/vcs.xml
+Examples/BallGame/.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+Examples/BallGame/.idea/dataSources.ids
+Examples/BallGame/.idea/dataSources.xml
+Examples/BallGame/.idea/dataSources.local.xml
+Examples/BallGame/.idea/sqlDataSources.xml
+Examples/BallGame/.idea/dynamic.xml
+Examples/BallGame/.idea/uiDesigner.xml
+
+# Gradle:
+Examples/BallGame/.idea/gradle.xml
+Examples/BallGame/.idea/libraries
+
+# Mongo Explorer plugin:
+Examples/BallGame/.idea/mongoSettings.xml
+
+## File-based project format:
+Examples/BallGame/*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+Examples/BallGame/.idea_modules/
+
+# JIRA plugin
+Examples/BallGame/atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+Examples/BallGame/com_crashlytics_export_strings.xml
+Examples/BallGame/crashlytics.properties
+Examples/BallGame/crashlytics-build.properties
+Examples/BallGame/fabric.properties
+
+### WebStorm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml 
+# *.ipr
+
+# Example:CarGame at "Examples/CarGame/"
+
+# User-specific stuff:
+Examples/CarGame/.idea/workspace.xml
+Examples/CarGame/.idea/tasks.xml
+Examples/CarGame/.idea/dictionaries
+Examples/CarGame/.idea/vcs.xml
+Examples/CarGame/.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+Examples/CarGame/.idea/dataSources.ids
+Examples/CarGame/.idea/dataSources.xml
+Examples/CarGame/.idea/dataSources.local.xml
+Examples/CarGame/.idea/sqlDataSources.xml
+Examples/CarGame/.idea/dynamic.xml
+Examples/CarGame/.idea/uiDesigner.xml
+
+# Gradle:
+Examples/CarGame/.idea/gradle.xml
+Examples/CarGame/.idea/libraries
+
+# Mongo Explorer plugin:
+Examples/CarGame/.idea/mongoSettings.xml
+
+## File-based project format:
+Examples/CarGame/*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+Examples/CarGame/.idea_modules/
+
+# JIRA plugin
+Examples/CarGame/atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+Examples/CarGame/com_crashlytics_export_strings.xml
+Examples/CarGame/crashlytics.properties
+Examples/CarGame/crashlytics-build.properties
+Examples/CarGame/fabric.properties
 
 ### WebStorm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
