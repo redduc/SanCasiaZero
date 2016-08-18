@@ -46,8 +46,8 @@ namespace sczBallGame
             physicsComponent
                 .collisionHandlers.push(new BounceCollisionHandle());
 
-            arrow.addComponent(new TranslateComponent(150,75,180));
-            arrow.addComponent(new VelocityComponent(0,10,10));
+            arrow.addComponent(new TranslateComponent(150,75,-45));
+            arrow.addComponent(new VelocityComponent(5,0,0));
             arrow.addComponent(renderComponent);
             arrow.addComponent(physicsComponent);
 

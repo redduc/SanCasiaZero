@@ -18,18 +18,33 @@ namespace sczGame
             var physics = <PhysicsComponent>
                 entity.getComponentsByType(PhysicsComponent._getType())[0];
 
-            if(translate.x < 0
-                || translate.x > 150
-                || translate.y < 0
-                || translate.y > 300)
+            var rigidBody =
+                physics.rigidBody.transfer(
+                    translate.x,
+                    translate.y,
+                    translate.angel,
+                    new PolygonPoint2D(
+                        translate.rotationPoint.x,
+                        translate.rotationPoint.y));
+
+            for (var index in rigidBody.points)
             {
-                // "collision"
-                for(var index in physics.collisionHandlers)
+                var point = rigidBody.points[index];
+
+                if (point.x < 0
+                    || point.x > 300
+                    || point.y < 0
+                    || point.y > 150)
                 {
-                    physics.collisionHandlers[index].process(entity, null);
+                    // "collision"
+
+                    for (var index in physics.collisionHandlers)
+                    {
+                        physics.collisionHandlers[index].process(entity, null);
+                    }
+                    return
                 }
             }
         }
-
     }
 }

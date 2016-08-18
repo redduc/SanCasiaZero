@@ -3,6 +3,7 @@
 
 namespace sczGame {
     import Polygon2D = Polygons.Polygon2D;
+    import PolygonPoint2D = Polygons.PolygonPoint2D;
     export class PhysicsComponent implements sczEcs.IComponent {
         public static _getType(): string
         {
@@ -21,8 +22,8 @@ namespace sczGame {
 
         public constructor(rigidBody: Polygon2D, mass: number)
         {
-            this.rigidBody = new Polygon2D("#FFF");
-            this.mass = 0;
+            this.rigidBody = rigidBody;
+            this.mass = mass;
 
             this.collisionHandlers = new Array();
         }
